@@ -4,6 +4,9 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class InsultGenerator {
 	public String generateInsult() {
 		String vowels = "AEIOU";
@@ -35,4 +38,5 @@ public class InsultGenerator {
 		}
 		return theInsult;
 	}
+	
 }
