@@ -15,9 +15,10 @@ public class InsultGenerator {
 		try {
 			String databaseURL = "jdbc:postgresql://";
 			databaseURL += System.getenv("POSTGRESQL_SERVICE_HOST");
-			databaseURL += "/" + System.getenv("POSTGRESQL_DATABASE");
-			String username = System.getenv("POSTGRESQL_USER");
-			String password = System.getenv("PGPASSWORD");
+			databaseURL += "/" + System.getenv("OPENSHIFT_POSTGRESQL_DB_NAME");
+			String username = System.getenv("OPENSHIFT_POSTGRESQL_DB_USERNAME");
+			String password = System.getenv("OPENSHIFT_POSTGRESQL_DB_PASSWORD");
+			System.out.println(databaseURL);
 			Connection connection = DriverManager.getConnection(databaseURL, username, password);
 			if (connection != null) {
 				String SQL = "select a.string AS first, b.string AS second, c.string AS noun from short_adjective a , long_adjective b, noun c ORDER BY random() limit 1";
